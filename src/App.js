@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import {Suspense} from "react";
+
+import Header from './components/header/Header';
+// import Questions from './components/questions/Questions'
+// import TextContext from './components/text-context';
+// import Footer from './components/footer/Footer';
+// import ResetYourPassword from './components/footer/Footer';
+// import Slider from './components/slider/Slider';
+// import Oops from './Pages/Oops/Oops';
+// import SliderCustomers from './components/sliderCustomers/SliderCustomers';
+// import MySwiper from './components/MySwiper';
+// import SignIn from "./Pages/SignIn/SignIn";
+// import PolicyDetails from './Pages/PolicyDetails/PolicyDetails';
+// import TrustedProvisions from './components/TrustedProvisions/TrustedProvisions'
+import './App.scss';
 
 function App() {
+
+ 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback = {null}>
+      
+        <div className='wrapper' >
+          <Header/>
+          {/* <SignIn/> */}
+          {/* <PolicyDetails/> */}
+        </div>
+    </Suspense>
+
   );
 }
-
 export default App;

@@ -1,0 +1,86 @@
+.pricing__page{
+    width: 100%;
+    min-height: 100vh;
+    background: url("./pictures/backgruund.png") center no-repeat #F1F3F6;
+    background-size: cover;
+}
+.pricing__block__title{
+    padding-top: 128px;
+    .pricing__disclaimer{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 150%;
+        text-align: center;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #B6BFD9;
+    }
+    .pricing__title{
+        padding: 16px 0px;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 64px;
+        line-height: 120%;
+        text-align: center;
+        color: #1D212A;
+    }
+    .pricing__text{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 120%;
+        text-align: center;
+        color: #1D212A;
+    }
+}
+.switch{
+  margin: 60px 0px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: center;
+  & span{
+    text-align: center;
+    font-family: 'Open_Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+  }
+  .active{
+    color: #1D212A;
+  }
+  .inactive{
+    color: #565A65;
+  }
+}
+
+@media (max-width: 768px) {
+  .pricing__block__title{
+    padding-top: 32px;
+  }
+}
+@media (max-width: 570px) {
+  .switch{
+    margin: 32px 0px 120px 0px;
+  }
+}
+@media (max-width: 450px) {
+  .pricing__block__title{
+    .pricing__disclaimer{
+        font-size: 14px;
+    }
+    .pricing__title{
+        padding: 8px 0px;
+        font-size: 32px;
+    }
+    .pricing__text{
+      font-size: 16px;
+    }
+  }
+
+}
