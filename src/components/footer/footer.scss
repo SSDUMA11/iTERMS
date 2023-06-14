@@ -8,16 +8,19 @@
 .footer__title{
     background: #F9FAFC;
     box-shadow: 0px 38px 56px rgba(109, 93, 202, 0.3), 0px 20.7957px 15.3272px rgba(102, 86, 185, 0.177553), 0px 15.8955px 0px rgba(92, 76, 182, 0.0372931);
-    border-radius: 0px 0px 8px 8px;
+    border-radius: 8px 8px 8px 8px;
     max-width: 1110px;
-    min-height: 379px;
+    min-height: 430px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     margin: 0 auto;
+    position: relative;
+    bottom: 60px;
     .footer__text{
         max-width: 583px;
+        margin-top: 60px;
         text-align: center;
         .footer__disclaimer{
             font-family: 'Poppins';
@@ -121,7 +124,7 @@
 }
 
 .footer__info{
-    margin: 120px 0px 48px 0px;
+    margin: 60px 0px 48px 0px;
     display: flex;
     gap: 195px;
     // .iTerms__block{

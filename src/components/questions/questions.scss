@@ -35,6 +35,22 @@
                 color: #8770FF;
             }    
         }
+        .contents{
+            & select{
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 150%;
+                color: #1D212A;
+                cursor: pointer;
+                background: none;
+                outline: none;
+                &:hover {
+                    color: #8770FF;
+                }
+            }  
+        }
     }
 }
 
@@ -179,7 +195,7 @@
 ///media
 @media (max-width: 768px) {
     .questions__title {
-        margin: 0px 45px 60px;
+        margin: 60px 45px 0px;
         .questions__disclaimer{
             text-align: left;
         }
@@ -228,8 +244,10 @@
     }
 }
 @media (max-width: 500px) {
+    .questions__container {
+        padding: 60px 0px 90px 0px;
+    }
     .questions__title{
-        padding-top: 60px;
         margin-bottom: 32px;
         .questions__disclaimer{
             font-size: 14px;  

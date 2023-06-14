@@ -1,0 +1,282 @@
+.block__marker{
+    position: relative;
+    flex-direction: row;
+    display: flex;
+    align-items: flex-start;
+    margin: 0 auto;
+    max-width: 1131px;
+    min-height: 1131px;
+    border-radius: 50%;
+    justify-content: center;
+    background-color: #b6bfd91f;
+    .img__group__one{
+        position: absolute;
+        right: 80%;
+        max-width: 390px;
+        .cards_two{
+            width: 346px;
+            height: 280px;
+        }
+        .cards_three{
+            width: 464px;
+            height: 454px;
+        } 
+    }
+    .text__group{
+        display: flex;
+        flex-direction: column;
+        gap: 88px;
+        .marker__title{
+            margin-top: 138px;
+            text-align: center;
+            max-width: 554px;
+            .align{
+                text-align: center;
+                margin-bottom: 105px
+            }
+        }
+        .marker__price{
+            position: relative;
+            text-align: center;
+            .marker__line{
+                position: absolute;
+                bottom: 61px;
+                left: 32px;
+                margin: 0 auto;
+                right: 0;
+                width: 245px;
+                height: 191px;
+            }
+            .marker{
+                position: absolute;
+                width: 300px;
+                height: 300px;
+                z-index: 1;
+                left: 365px;
+            }
+            .price{
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 300;
+                font-size: 64px;
+                line-height: 120%;
+                color: #1D212A;
+                padding-bottom: 37px;
+                & sup{
+                    position: relative;
+                    bottom: 20px;
+                    font-weight: 400;
+                    font-size: 24px;
+                }
+            }
+            & h3{
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 24px;
+                line-height: 120%;
+                color: #1D212A;
+                padding-bottom: 7px;
+            }
+            & p{
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 150%;
+                color: #1D212A;
+            }
+        }
+        .box__cards{
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -64px;
+            padding: 5% 15%;
+            margin: 0px 20px;
+            max-width: 1110px;
+            min-height: 388px;
+            background: #FFFFFF;
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 20px;
+            box-shadow: 0px 38px 56px rgba(191, 204, 225, 0.39), 0px 20.7957px 15.3272px rgba(191, 204, 225, 0.177553), 0px 15.8955px 0px rgba(191, 204, 225, 0.0372931);
+            .cards{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                & p{
+                    font-family: 'Open_Sans';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 150%;
+                    color: #1D212A;
+                    padding-top: 8px;
+                    max-width: 130px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    .img__group__two{
+        position: absolute;
+        left: 83%;
+        .cards_one{
+            width: 390px;
+            height: 500px;
+        }
+        .cards_four{
+            max-width: 442px;
+            height: 310px;
+        }
+    }
+}
+
+@media (max-width: 1100px) {
+    .block__marker{
+        max-width: 900px;
+        min-height: 900px;
+        .img__group__one{
+            .cards_two{
+                width: 539px;
+                height: 264px;
+            }
+            .cards_three{
+                width: 499px;
+                height: 305px;
+            } 
+        }
+        .text__group{
+            gap: 0px;
+            .marker__title{
+                margin-top: 90px;
+            }
+        }
+        .img__group__two{
+            .cards_one{
+                width: 275px;
+                height: 375px;
+            }
+            .cards_four{
+                max-width: 348px;
+                height: 244px;
+            }
+        } 
+    }
+}
+
+@media (max-width: 768px) {
+    .block__marker{
+        margin-top: 50px;
+        background: url("./pictures/Cicleoffers.svg") center no-repeat #F1F3F6;
+        background-size: cover;
+        border-radius: 0;
+        min-height: 1070px;
+        .text__group{
+            .marker__title{
+                .align{
+                    margin-bottom: 0px
+                }
+            }
+            .marker__price{
+                .marker__line{
+                    bottom: 41px;
+                    width: 211px;
+                }
+                & a{
+                    font-family: 'Poppins';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 150%;  
+                    color: #1D212A;
+                    &:hover{
+                        color: #32d989;
+                    } 
+                    .arrow{
+                        position: absolute;
+                        margin-top: 12px;
+                        margin-left: 7px;
+                        width: 10px;
+                        height: 10px;
+                        background: transparent;
+                        border-top: 3px solid #32d989;
+                        border-right: 3px solid #30d987;
+                        transition: all 200ms ease;
+                        transform: translate3d(0,-50%,0) rotate(45deg);
+                    }
+                }   
+            }
+            .box__cards{
+                padding: 5% 5%;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 15px;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .block__marker{
+        margin-top: 50px;
+        background: url("./pictures/Cicleoffers.svg") center no-repeat #F1F3F6;
+        background-size: cover;
+        border-radius: 0;
+        min-height: 1070px;
+        .text__group{
+            .marker__title{
+                .title__block{
+                    .disclaimer{
+                        font-size: 14px;
+                    }
+                    & h2{
+                        font-size: 24px;
+                    } 
+                }
+                .align{
+                    margin-bottom: 0px
+                }
+                .subtitle{
+                    font-size: 16px;
+                }
+            }
+            .marker__price{
+                .marker__line{
+                    bottom: 41px;
+                    width: 211px;
+                }
+                & a{
+                    font-family: 'Poppins';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 150%;  
+                    color: #1D212A;
+                    &:hover{
+                        color: #32d989;
+                    } 
+                    .arrow{
+                        position: absolute;
+                        margin-top: 12px;
+                        margin-left: 7px;
+                        width: 10px;
+                        height: 10px;
+                        background: transparent;
+                        border-top: 3px solid #32d989;
+                        border-right: 3px solid #30d987;
+                        transition: all 200ms ease;
+                        transform: translate3d(0,-50%,0) rotate(45deg);
+                    }
+                }   
+            }
+            .box__cards{
+                margin: 0px 15px;
+                padding: 5% 5%;
+                grid-template-columns: repeat(2, 1fr);
+            
+            }
+        }
+    }
+}

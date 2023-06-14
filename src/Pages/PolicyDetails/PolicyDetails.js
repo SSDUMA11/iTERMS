@@ -10,7 +10,6 @@ import FreeWebHosting from "./pictures/FreeWebHosting.svg"
 import Slider from '../../components/slider/Slider';
 import TrustedProvisions from '../../components/TrustedProvisions/TrustedProvisions';
 import Questions from '../../components/questions/Questions';
-import BlockFooter from '../../components/BlockFooter/BlockFooter'
 import Footer from '../../components/footer/Footer';
 
 
@@ -181,8 +180,6 @@ const PolicyDetails = () => {
 
     <TrustedProvisions/>
     <Questions/>
-    <BlockFooter/>
-
     <Footer/>
     </div>
   )

@@ -4,7 +4,7 @@ import i18next from 'i18next';
 import '../../i18n'
 import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom';
 import Main from '../../Pages/Main/Main';
-import Generate from '../../Pages/Generate/Generate';
+import PolicyDetails from '../../Pages/PolicyDetails/PolicyDetails';
 import Contact from '../../Pages/Contact/Contact';
 import Pricing from '../../Pages/Pricing/Pricing';
 import Blog from '../../Pages/Blog/Blog';
@@ -73,7 +73,7 @@ const handleLanguageChange = (e) =>{
                 <div className="header__languages">
                     <select value={localStorage.getItem("i18nextLng")} onChange={handleLanguageChange}>
                         <option value='ua' className="ua">Ua</option> 
-                        <option value='en' className="en" selected >En</option>
+                        <option value='en' className="en">En</option>
                     </select>
                 </div>
             </nav> 
@@ -87,7 +87,7 @@ const handleLanguageChange = (e) =>{
 
     <Routes>
         <Route path='/' element={<Main />} />
-        <Route path='/generate' element={<Generate />} />
+        <Route path='/generate' element={<PolicyDetails />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/pricing' element={<Pricing />} />
         <Route path='/blog' element={<Blog />} />

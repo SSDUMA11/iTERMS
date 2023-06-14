@@ -11,7 +11,7 @@ import {slides} from './Customers'
 const SliderCustomers  = () => {
     
   return (
-    <Swiper className="swiper"
+    <Swiper className="swiper__two"
     modules={[Navigation, Pagination]}
     grabCursor={true}
     spaceBetween={30}
@@ -26,10 +26,10 @@ const SliderCustomers  = () => {
     }}>
 
         {slides.map(user =>(
-            <SwiperSlide key={user.id} className="swiper-slide">
+            <SwiperSlide key={user.id} className="swiper-slide__two">
                 <div className="block__name">
                     <div className="cards__img">
-                        <img srs={user.img} alt='img'/>
+                        <img src={user.img} alt='img'/>
                     </div>
                     <div className="cards__name">
                         <h3>{user.name}</h3>
@@ -38,8 +38,7 @@ const SliderCustomers  = () => {
                 </div>
                 <div className='block__text'>
                   <p>{user.text} </p>
-                  <span>{user.rating}</span>
-
+                  <div className='rating'>{user.rating}<img src={user.star} alt='img'/></div>
                 </div>
             </SwiperSlide>
         ))}
