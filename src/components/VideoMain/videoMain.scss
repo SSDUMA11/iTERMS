@@ -1,0 +1,160 @@
+.main__video{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0px;
+   
+    .third__title{
+        max-width: 481px;
+    }
+    .video__main{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        // margin-bottom: 120px;
+        .video{
+            box-shadow: 0px 38px 56px rgba(191, 204, 225, 0.39), 0px 20.7957px 15.3272px rgba(191, 204, 225, 0.177553), 0px 15.8955px 0px rgba(191, 204, 225, 0.0372931);
+            border-radius: 8px;
+            width: 350px;
+            min-height: 255px;
+            z-index: 1;
+            object-fit: cover;
+        }
+        .line__video{
+            background: #8770FF;
+            height: 1px;
+            width: 90%;
+            .numer__video{
+                position: relative;
+                bottom: 30px;
+                display: flex;
+                justify-content: center;
+                justify-content: space-evenly;
+                .line__video__two{
+                    position: absolute;
+                    background: #8770FF;
+                    height: 1px;
+                    width: 90%;
+                    right: 100%;
+                    top: 17%;
+                }
+                .numer__block{
+                    margin: 0px 10px;
+                    max-width: 166px;
+                    display: flex;
+                    flex-direction: column;
+                    .numer{
+                        background: #F1F3F6;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+                        border: 1px solid #8770FF;
+                        font-family: 'Poppins';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 24px;
+                        line-height: 120%;
+                        color: #8770FF
+                    }
+                    & p{
+                        margin-top: 32px;
+                        font-family: 'Poppins';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 24px;
+                        line-height: 120%;
+                        color: #1D212A;
+                    }
+                }
+            }
+        }
+    }
+}
+
+///media
+@media (max-width: 768px) {
+    .main__video{
+        .third__title{
+            text-align: center;
+            .subtitle{
+                text-align: center;
+                margin-bottom: 60px;
+            }
+        }
+        .video__main{
+            flex-direction: column-reverse;
+            .video{
+                width: 80%;
+                min-height: 400px;
+                margin-top: 166px;
+            }
+            .line__video{
+                width: 73%;
+                .numer__video{
+                    justify-content: space-between;
+                    .numer__block{
+                        margin: 0px 0px 0px 0px;
+                        & p{
+                           text-align: center;
+                        }
+                    }
+                }
+                .block__one{
+                    align-items: flex-start;
+                    & p{
+                        position: relative;
+                        right: 30%;
+                    }
+                }
+                .block__two{
+                    align-items: center;
+
+                }
+                .block__three{
+                    align-items: flex-end;
+                    & p{
+                        position: relative;
+                        left: 30%;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+@media (max-width: 450px) {
+.main__video{
+    .third__title{
+        .disclaimer{
+            font-size: 14px;
+        }
+        & h2{
+            padding: 8px 0px;
+            font-size: 24px;
+        }
+    }
+    .video__main{
+        .video{
+            width: 94%;
+            min-height: 240px;
+            margin-top: 166px;
+        }
+        .line__video{
+            width: 86%;
+            .numer__video{
+                .numer__block{
+                    & p{
+                        font-size: 16px;
+                       text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+}

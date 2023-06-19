@@ -21,19 +21,21 @@ const StarRating = () => {
 
   return (
     <div className='star__rating'>
-        <p>Excellent</p>
+      <p>Excellent</p>
       <Rating 
-      onClick={handleRating}
-      initialValue="4.5"
-      allowFraction={true} 
-      fillClassName="fill"
-      emptyClassName="empty"
-      fillColor="#FFFFFF"
-      size="16"
+        onClick={handleRating}
+        initialValue="4.5"
+        allowFraction={true} 
+        fillClassName="fill"
+        emptyClassName="empty"
+        fillColor="#FFFFFF"
+        size="16"
       />
       <p>{numRatings} reviews on </p>
-      <img src={star} alt=''/>
-      <img src={Vector} alt=''/>
+      <div className='img__vector'> 
+        <img src={star} alt=''/> 
+        <img src={Vector} alt=''/>
+      </div>
     </div>
   );
 };

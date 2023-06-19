@@ -5,7 +5,7 @@ import { news } from './New';
 
 const WhatNew = () => {
   return (
-    <div className='__container'>
+    <div className='new__container'>
       <div className='posts__new'>
         {news.map(user =>(
           <div className='post' key={user.id}>

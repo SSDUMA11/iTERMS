@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     & p{
         font-family: 'Open_Sans';
         font-style: normal;
@@ -11,6 +12,10 @@
         line-height: 150%;
         color: #1D212A;
         padding: 0px 8px;
+    }
+    .img__vector{
+        display: flex;
+
     }
 }
 .fill{

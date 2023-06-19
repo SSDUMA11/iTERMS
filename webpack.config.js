@@ -31,7 +31,13 @@ module.exports = {
         rules: [
             {
                 test: /\.s[ac]ss$/,
-                use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+                use:[
+                    MiniCssExtractPlugin.loader, 
+                    
+                    { loader: 'css-loader', options: { modules: { localIdentName: "[name]_[local]__[hash:base64:5]" }}},
+                     
+                    'sass-loader'
+                ]    
             },
             {
                 test: /\.(js|jsx)$/,

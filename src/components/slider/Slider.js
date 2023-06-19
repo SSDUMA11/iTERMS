@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState, useEffect} from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination} from 'swiper';
 import 'swiper/scss';
@@ -10,7 +10,18 @@ import {slides} from './Slides'
 
 
 const Slider = () => {
-    
+    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 769); ///the table when the screen width is less than 769px
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 769);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+  
   return (
     <Swiper className="swiper"
     modules={[Navigation, Pagination]}
@@ -34,7 +45,7 @@ const Slider = () => {
                     </div>
                     <div className="cards__text">
                         <h3>{user.title}</h3>
-                        <p>{user.text}</p>
+                        {isSmallScreen ? <p>{user.textSmall}</p>: <p>{user.text}</p>}
                     </div>
                 </div>
                 <div className="cards__btn">

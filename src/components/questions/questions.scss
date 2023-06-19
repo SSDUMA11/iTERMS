@@ -7,6 +7,7 @@
 .questions__block{
     display: flex;
     gap: 70px;
+   margin-bottom: 150px;
     .questions__contents{
         max-width: 215px;
         & h3{
@@ -192,6 +193,7 @@
         }
     }
 }
+
 ///media
 @media (max-width: 768px) {
     .questions__title {
@@ -211,7 +213,7 @@
         display: flex;
         flex-direction: column;
         gap: 30px;
-        margin: 0px 45px;
+        margin: 0px 45px 150px 45px;
         .questions__contents{
             max-width: 215px;
             & h3{
@@ -243,12 +245,10 @@
         }
     }
 }
+
 @media (max-width: 500px) {
-    .questions__container {
-        padding: 60px 0px 90px 0px;
-    }
     .questions__title{
-        margin-bottom: 32px;
+        margin: 90px 15px 32px 15px;
         .questions__disclaimer{
             font-size: 14px;  
         }
@@ -259,6 +259,9 @@
             font-size: 16px;
         }
     }
+    .questions__block{
+        margin: 0px 15px 150px 15px;
+    }
     .accordion {
         button {
             padding: 7px 0px;
@@ -267,8 +270,8 @@
                 top: 10px;
             }
         }
-        .accordion-content {
-            padding: 24px 0px;
+        .accordion-content{
+            padding: 5px 0px;
             p {
                 font-size: 16px;
             }

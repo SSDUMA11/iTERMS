@@ -15,7 +15,7 @@ const PricingTableMedia = () => {
     };
 
   return (
-    <div className='__container'>
+    <div className='pricing__container'>
         <div className='block__pro'>
             <div className='most__popular'>
                 <p>Most popular</p>

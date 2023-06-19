@@ -26,12 +26,12 @@ const Questions = () => {
         setData(result);
     };
 
-    ///the table when the screen width is less than 570px
-    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768); 
+    ///the table when the screen width is less than 769px
+    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 769); 
 
     useEffect(() => {
         const handleResize = () => {
-            setIsSmallScreen(window.innerWidth < 768);
+            setIsSmallScreen(window.innerWidth < 769);
         };
         window.addEventListener('resize', handleResize);
         return () => {

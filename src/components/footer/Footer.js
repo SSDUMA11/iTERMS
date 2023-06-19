@@ -1,53 +1,59 @@
-import React from 'react';
-import './footer.scss';
+import { useState, useEffect } from 'react';
+import styles from './footer.module.scss';
 import '../../fonts/fonts.scss';
 
 const Footer = () => {
+    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 769); ///the table when the screen width is less than 769px
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 769);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
   return (
-        <footer className="footer" >
-            <div className="footer__container">
-                <div className="footer__title">
-                    <div className="footer__text">
-                        <div className="footer__disclaimer">Get Started Within Minutes</div>
-                        <p className="disclaimer__media">Latest blog articles</p>
+        <footer className={styles.footer} >
+            <div className='footer__container'>
+                <div className={styles.footer__title}>
+                    <div className={styles.footer__text}>
+                        <div className={styles.disclaimer}>{isSmallScreen ? 'Latest blog articles' : 'Get Started Within Minutes'}</div>
 
-                        <h2><span>Are You </span> Ready to protect your business?</h2>
+                        <h2>{isSmallScreen ? 'Ready to protect your business?' :'Are You Ready to protect your business?'}</h2>
 
-                        <p className="media__none">Sign up for our account packages and start generating legal agreements suited to your business needs.</p>
-
-                        <p className="text__media">More than 140,000 businesses use iTerms. Join our community.</p>
+                        <p className={styles.subtitle}>{isSmallScreen ? 'More than 140,000 businesses use iTerms. Join our community.' : 'Sign up for our account packages and start generating legal agreements suited to your business needs.'}</p>
                     </div>
 
-                    <div className="footer__btn">
-                        <button className="started__btn">Get started for free</button>
-                        <button className="started__btn__media">Sign me Up!</button>
-                        <a href='*'> Learn more <span className='arrow'></span></a>
+                    <div className={styles.footer__btn}>
+                        <button className={styles.button}>{isSmallScreen ? 'Sign me Up!' : 'Get started for free'}</button>
+                        <a href='*'> Learn more <span className={styles.arrow}></span></a>
                     </div>
                 </div>
 
-                <div className="footer__info">
-                    <div className="info__block">
-                        <div className="box">
-                            <h3 className="footer__iTerms">iTerms</h3>
-                            <p className="media__none">More than 140,000 businesses use iTerms. Join our community.</p>
-                            <a className="media__info">Terms & Conditions</a>
-                            <a className="media__info">Privacy Policy</a>
-                            <a className="media__info">Disclaimer</a>
-
-                            <div className="version">
-                                <a className="media__info">English version</a>
-                            </div> 
+                <div className={styles.footer__info}>
+                    <div className={styles.info__block}>
+                        <div className={styles.box}>
+                            <h3 className={styles.footer__iTerms}>iTerms</h3>
+                            {isSmallScreen ? <a href='/generate'  className={styles.iTerms__info}>Terms & Conditions</a> : ''}
+                            {isSmallScreen ? <a href='*' className={styles.iTerms__info}>Privacy Policy</a> : ''}
+                            {isSmallScreen ? <a href='*' className={styles.iTerms__info}>Disclaimer</a> : ''}
+                            {isSmallScreen ? <div className={styles.version}>
+                                <a href='*' className={styles.iTerms__info}>English version</a>
+                            </div> : ''}
+                            {isSmallScreen ? '' : <p className={styles.iTerms__text}>More than 140,000 businesses use iTerms. Join our community.</p> }
                         </div>
                        
-                        <div className="box">
+                        <div className={styles.box}>
                             <h3>Company</h3>
-                            <a href>How It Works</a>
-                            <a href>Reviews</a>
-                            <a href>Contact us</a>
-                            <a href>Blog</a>
+                            <a href='*' >How It Works</a>
+                            <a href='*'>Reviews</a>
+                            <a href='*'>Contact us</a>
+                            <a href='/blog'>Blog</a>
                         </div>
 
-                        <div className="box">
+                        <div className={styles.box}>
                             <h3>Products</h3>
                             <a href='*'>Solutions</a>
                             <a href='*'>Trust & Safety</a>
@@ -55,7 +61,7 @@ const Footer = () => {
                             <a href='*'>Help</a>
                         </div>
 
-                        <div className="box">
+                        <div className={styles.box}>
                             <h3>Support</h3>
                             <a href='*'>Help</a>
                             <a href='*'>Pricing</a>
@@ -65,12 +71,12 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <address className="footer__address">
+                <address className={styles.footer__address}>
                     <p>© 2021 Terms Inc. All rights reserved</p>
-                    <a className="media__none">Terms & Conditions</a>
-                    <a className="media__none">Privacy Policy</a>
-                    <a className="media__none">Disclaimer</a>
-                    <a className="media__none">English version</a> 
+                    {isSmallScreen ? '' : <a href='/generate'  className={styles.iTerms__info}>Terms & Conditions</a>}
+                    {isSmallScreen ? '' :<a href='*' className={styles.iTerms__info}>Privacy Policy</a>}
+                    {isSmallScreen ? '' :<a href='*' className={styles.iTerms__info}>Disclaimer</a>}
+                    {isSmallScreen ? '' :<a href='*' className={styles.iTerms__info}>English version</a>}
                 </address>
             </div>
         </footer>
