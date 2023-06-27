@@ -1,57 +1,78 @@
-import { useState, useEffect} from 'react';
-import './videoMain.scss';
+import  React,{ useState, useEffect} from 'react';
+import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
+import styles from './videoMain.module.scss';
 import '../../fonts/fonts.scss';
-import video from './video/pexels-darlene.mp4'
+import '../../i18n';
+import video from './video/pexels-darlene.mp4';
 
 const VideoMain = () => {
-    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 769); ///the table when the screen width is less than 769px
+  const { t } = useTranslation(['videoMain']);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 769); ///the table when the screen width is less than 769px
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsSmallScreen(window.innerWidth < 769);
-        };
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-    
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 769);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  ///Animation
+  const videoAnimation ={
+    hidden:{
+      x: -1000,
+      opacity:1,
+    },
+    visible:custom =>({
+      x: 0,
+      opacity:1,
+      transition:{
+        delay: custom * 0.2,
+        duration:1,
+      },
+    }),
+  };
   return (
-        <div className='main__video __container'>
-            <div className='third__title'>
-                <p className='disclaimer'>{isSmallScreen ? 'Easy how to eat cookies':'Easy & Cost-Effective'}</p>
-                <h2>How it works?</h2>
-                <p className='subtitle'>{isSmallScreen ? 'Create a free terms and conditions agreement (aka terms of use or terms of service) for your website or app.': 'Numerous legal agreements accessible at the touch of your fingerprints for your website or mobile app.'}</p>
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{amount: 0.1, once:true}} 
+      className={styles.main__video__containere}>
+      <div className={styles.block__title}>
+        <p className={styles.disclaimer}>{isSmallScreen ? t ('disclaimerOne'): t ('disclaimerTwo')}</p>
+        <h2>{t ('title')}</h2>
+        <p className={styles.subtitle}>{isSmallScreen ? t ('subtitleOne'): t ('subtitleTwo')}</p>
+      </div>
+
+      <div className={styles.video__block}>
+        <motion.video custom={1} variants={videoAnimation} className={styles.video} autoPlay loop muted>
+          <source src={video} type="video/mp4"/>
+        </motion.video>
+        
+        <div className={styles.line__video}>
+          <div className={styles.numer__video}>
+            {isSmallScreen ? '': <div className={styles.line__video__two}></div>}
+            <div className={`${styles.numer__block} ${styles.block__one}`}>
+              <div className={styles.numer}>1</div>
+              <p>{isSmallScreen ? t ('itemSmallOne'): t ('itemBigOne')}</p>
             </div>
 
-            <div className='video__main'>
-                <video className='video' autoPlay loop muted>
-                    <source src={video} type="video/mp4"/>
-                </video>
-        
-                <div className='line__video'>
+            <div className={`${styles.numer__block} ${styles.block__two}`}>
+              <div className={styles.numer}>2</div>
+              <p>{isSmallScreen ? t ('itemSmallTwo'): t ('itemBigTwo')}</p>
+            </div> 
 
-                <div className='numer__video'>
-                    {isSmallScreen ? '': <div className='line__video__two'></div>}
-                    <div className='numer__block block__one'>
-                    <div className='numer'>1</div>
-                    <p>{isSmallScreen ? 'Choose your policy': 'Choose Your Desired Policy'} </p>
-                </div>
-
-                <div className='numer__block block__two'>
-                  <div className='numer'>2</div>
-                  <p>{isSmallScreen ? 'Chat with AI Assistant':'Collaborate withour AI Assistant'}</p>
-                </div> 
-
-                <div className='numer__block block__three'>
-                  <div className='numer'>3</div>
-                  <p>{isSmallScreen ? 'Get your document':'Collect Your Legal Document'}</p>
-                </div>
+            <div className={`${styles.numer__block} ${styles.block__three}`}>
+              <div className={styles.numer}>3</div>
+              <p>{isSmallScreen ? t ('itemSmallThree'): t ('itemBigThree')}</p>
             </div>
           </div>
         </div>
       </div>
-    )
-}
-
-export default VideoMain
+    </motion.div>
+  );
+};
+export default VideoMain;

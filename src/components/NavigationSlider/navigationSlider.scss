@@ -1,0 +1,32 @@
+.showcaseSlider_nav{
+    margin: 16px 10px;
+    height: 20px;
+    font-size: 18px;
+    color: rgba(29, 33, 42, 1);
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    padding-right: 0;
+    & button{
+        background-color: #ffffff00;
+        color: #1D212A;
+    }
+}
+  
+.showcaseSlider-prev, .showcaseSlider-next {
+    position: static;
+    display: flex;
+    align-items: flex-end;
+    color: rgba(29, 33, 42, 1);
+    margin: 5px;
+    height: auto;
+    font-weight: 600;
+} 
+  
+.showcaseSlider-prev::after, .showcaseSlider-next::after {
+    font-size: 18px;
+}
+  
+.showcaseSlide-prev:hover, .showcaseSlider-next:hover {
+    color: rgba(135, 112, 255, 1);
+}

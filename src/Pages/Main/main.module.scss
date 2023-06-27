@@ -1,0 +1,169 @@
+@import '../../template.scss';
+
+.page__main{
+    background: #F1F3F6;
+}
+
+///Styles for the block header with a slider
+.title__slider__block{
+    .background__text{
+        margin: 0 auto;
+        text-align: center;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 288px;
+        line-height: 100%;
+        background: linear-gradient(180deg, #FFFFFF 31.39%, rgba(255, 255, 255, 0) 94.79%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        position: relative;
+        top: 200px;
+    }
+   .title__block{
+        position: relative;
+        margin-bottom: 60px;
+        z-index: 2;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        .title{
+            max-width: 397px;
+            .disclaimer{
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 500;
+                line-height: 150%;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: #B6BFD9;
+                @include adaptiv-font(18, 14);
+            }
+            h2{
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 300;
+                line-height: 120%;
+                color: #1D212A;
+                @include adaptiv-font(48, 24);
+            }
+        }
+        .subtitle__text{
+            max-width: 306.47px;
+            .subtitle{
+                font-family: 'Open_Sans';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 150%;
+                text-align: justify;
+                color: #565A65;
+            }
+        }
+   }
+}
+
+///Styles for the heading of the block with cards
+.title__cards__block{
+    margin-top: 180px;
+    margin-bottom: 60px;
+    .title__block{
+        text-align: center;
+        .title{
+            .disclaimer{
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 500;
+                line-height: 150%;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: #B6BFD9;
+                @include adaptiv-font(18, 14);
+            }
+            h2{
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 300;;
+                line-height: 120%;
+                color: #1D212A;
+                @include adaptiv-font(48, 24);
+            }
+        }
+        .subtitle__text{
+            margin: 0 auto;
+            max-width: 480px;
+            .subtitle{
+                text-align: center;
+                font-family: 'Open_Sans';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 150%;
+                color: #565A65;
+            }
+        }
+    }
+}
+
+///media
+@media (max-width: 768px) {
+    .title__slider__block{
+       .title__block{
+            width: 90%;
+            margin: 0px 45px 60px 45px;
+            gap: 10%;
+            .title{
+                max-width: 397px;
+            }
+            .subtitle__text{
+                padding-right: 10px;
+                max-width: 270px;
+                min-height: 96px;
+            }
+        } 
+    }
+}
+
+
+@media (max-width: 450px) {
+    .title__slider__block{
+        .background__text{
+            font-size: 128px;
+            top: 70px;
+        }   
+       .title__block{
+            align-items: flex-start;
+            flex-direction: column;
+            width: 90%;
+            margin: 0px 14px 32px 15px;
+            gap: 10%;
+            .subtitle__text{
+                max-width: 100%;
+            }
+        } 
+    }
+
+    .title__cards__block{
+        margin-top: 90px;
+        margin-bottom: 30px;
+        .title__block{
+            margin: 0px 15px;
+            text-align: left;
+            .title{
+                & h2{
+                    padding: 8px 0px;
+                    font-weight: 400;
+                } 
+            }
+            .subtitle__text{
+                margin: 0px 0px;
+                max-width: 271px;
+                .subtitle{
+                    text-align: left;
+                }
+            }
+        }
+    }
+}

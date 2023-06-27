@@ -1,27 +1,29 @@
-import React from 'react'
-import './blog.scss';
+import React from 'react';
+import styles from './blog.module.scss';
 import '../../fonts/fonts.scss';
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
 ///components
 import Posts from '../../components/Posts/Posts';
 import Footer from '../../components/footer/Footer';
 
 const Blog = () => {
+  const { t } = useTranslation(['blog']);
   return (
     <>
-    <div className='first__screen'>
-      <div className='blog__container'>
-        <div className='blog__title'>
-          <p className='title__disclaimer'>Keep Up With the Latest</p>
-          <h1>Discover What`s New</h1>
-          <p className='title__text'>Learn from the experts at iTerms to ensure you stay on top of
-          industry legalities and changing legal landscapes at all times.</p>
+      <div className={styles.first__screen}>
+        <div className="blog__container">
+          <div className={styles.blog__title}>
+            <p className={styles.title__disclaimer}>{t ('disclaimer')}</p>
+            <h1>{t ('title')}</h1>
+            <p className={styles.title__text}>{t ('subtitle')}</p>
+          </div>
+          <Posts/>
         </div>
-        <Posts/>
       </div>
-    </div>
-    <Footer/> 
+      <Footer/> 
     </>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;

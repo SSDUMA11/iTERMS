@@ -1,23 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import ReactPaginate from 'react-paginate';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Scrollbar } from "swiper";
-import 'swiper/scss';
-import "swiper/css/scrollbar";
-import './posts.scss';
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+import styles from './posts.module.scss';
 import '../../fonts/fonts.scss';
 import { post } from './Post';
-
+///IMG
+import picture from './pictures/post.webp';
+///components
+import Categories from '../Categories/Categories';
 
 const Posts = () => {
+  ///is responsible for translating the component
+  const { t } = useTranslation(['posts']);
+  const postsObj = t('post',{returnObjects:true});
+
+  /// the code updates the category property of each object in the postsObj array with the corresponding category value from the post array.
+  post.forEach((post, idx) => {
+    postsObj[idx].category = post.category;
+  });
   ///Filtering and displaying posts based on the selected category, as well as determining the count of posts.
-  const [data, setData] = useState(post);
+  const [data, setData] = useState(postsObj);
   const filterResult = (catItem) => {
-    let result = post;
+    let result = postsObj;
     if (catItem) {
-      result = post.filter((curData) => curData.category === catItem);
+      result = postsObj.filter((curData) => curData.category === catItem);
     } else {
-      result = post;
+      result = postsObj;
     }
     setData(result);
     setCurrentPage(0);
@@ -32,7 +41,7 @@ const Posts = () => {
   const PageSize = 12;
   const filteredData = data.slice(
     currentPage * PageSize,
-    (currentPage + 1) * PageSize
+    (currentPage + 1) * PageSize,
   );
 
   ///Updating the display of posts on the current page.
@@ -41,103 +50,27 @@ const Posts = () => {
     window.scrollTo({ top: 100, behavior: 'smooth' }); ///scroll to the top of the page when the user clicks on pagination
   };
 
-  ///The aside block changes when the screen width is less than 501px.
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 501);
-  useEffect(() => {
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 501);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
   return (
     <>
-      <main className='page__posts'>
-        {isSmallScreen ?
-          <aside className='swiper-aside' >
-            <h2>Categories</h2>
-            <Swiper className="swiper"
-              modules={[Scrollbar]}
-              grabCursor={true}
-              spaceBetween={30}
-              slidesPerView={'auto'}
-              speed={700}
-              centeredSlides={true}
-              loop={true}
-              scrollbar={{
-              hide: true,}}>
-            
-              {
-                [
-                'Accounts',
-                'Bookkeeping',
-                'Business',
-                'Business Advice',
-                'Cash',
-                'Collection',
-                'Contracts',
-                'Invoices',
-                'Ecommerce',
-                'Misc',
-                'Entrepreneur Interviews',
-                'Freelancer',
-                ].map((category) => (
-                  <SwiperSlide className='category__item' key={category}>
-                    <button className='swiper-btn' onClick={() => filterResult(category)}>
-                      {category} ({getCategoryCount(category)})
-                    </button>
-                  </SwiperSlide>
-                ))
-              }
-            </Swiper>
-          </aside> 
-          : 
-          <aside className='sticky-aside'>
-            <h2>Categories</h2>
-            <ul className='category__list'>
-              {
-                ['Accounts',
-                'Bookkeeping',
-                'Business',
-                'Business Advice',
-                'Cash',
-                'Collection',
-                'Contracts',
-                'Invoices',
-                'Ecommerce',
-                'Misc',
-                'Entrepreneur Interviews',
-                'Freelancer',
-                ].map((category) => (
-                  <li className='category__item' key={category}>
-                    <button onClick={() => filterResult(category)}>
-                      {category} ({getCategoryCount(category)})
-                    </button>
-                  </li>
-                ))
-              }
-            </ul>
-          </aside>
-        }
+      <main className={styles.page__posts}>
 
-        <div className='posts'>
+        <Categories filterResult={filterResult} getCategoryCount={getCategoryCount}/>
+
+        <div className={styles.posts}>
           {filteredData.map((user) => (
-            <div className='post' key={user.id}>
-              <div className='post__img'>
-                <img src={user.img} alt='img' />
+            <div className={styles.post} key={user.id}>
+              <div className={styles.post__img}>
+                <img src={picture} alt="img" />
               </div>
-              <div className='post__title'>
+              <div className={styles.post__title}>
                 <p>{user.title}</p>
               </div>
-              <div className='post__text'>
+              <div className={styles.post__text}>
                 <p>{user.text}</p>
               </div>
-              <div className='post__btn'>
-                <a href='*'>
-                  Read more <span className='arrow'></span>
+              <div className={styles.post__btn}>
+                <a href="/blogDetail">
+                  Read more <span className={styles.arrow}></span>
                 </a>
               </div>
             </div>
@@ -146,20 +79,20 @@ const Posts = () => {
       </main>
 
       <ReactPaginate
-        className='pagination'
+        className={styles.pagination}
         previousLabel={'<'}
-        previousClassName={'previous'}
-        nextClassName={'next'}
+        previousClassName={styles.previous}
+        nextClassName={styles.next}
         nextLabel={'>'}
         breakLabel={'...'}
-        breakClassName={'break-me'}
+        breakClassName={styles.break_me}
         pageCount={Math.ceil(data.length / PageSize)}
         marginPagesDisplayed={1}
         pageRangeDisplayed={3}
         onPageChange={handlePageChange}
-        containerClassName={'pagination'}
-        activeClassName={'active_p'}
-        activeLinkClassName={'active__link'}
+        containerClassName={styles.pagination}
+        activeClassName={styles.active_p}
+        activeLinkClassName={styles.active__link}
       />
     </>
   );

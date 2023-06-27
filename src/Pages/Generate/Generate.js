@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import './generate.scss';
 import '../../fonts/fonts.scss';
 
@@ -7,7 +7,8 @@ const Generate = () => {
   return (
     <>
     </>
-  )
-}
+  );
+};
 
-export default Generate
+export default Generate;
+

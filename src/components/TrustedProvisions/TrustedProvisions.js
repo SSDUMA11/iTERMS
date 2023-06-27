@@ -1,59 +1,61 @@
-import React from 'react'
-import './TrustedProvisions.scss';
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import styles from './trustedProvisions.module.scss';
 import '../../fonts/fonts.scss';
+import '../../i18n';
 ///IMG
-import Businesses from "./pictures/Businesses.svg"
-import CompliantPageviews from "./pictures/CompliantPageviews.svg"
-import TermsConditions from "./pictures/TermsConditions.svg"
+import Businesses from './pictures/Businesses.webp';
+import CompliantPageviews from './pictures/CompliantPageviews.webp';
+import TermsConditions from './pictures/TermsConditions.webp';
 
 const TrustedProvisions = () => {
+  ///is responsible for translating the component
+  const { t } = useTranslation(['trustedProvisions']);
+
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 769); ///the table when the screen width is less than 769px
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 769);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   return (
-    <>
-        <main className="legal__safeguards">
-            <div className="legal__safeguards__container">  
-                <div className="legal__safeguards__text">
-                    <div className="legal__safeguards__title">
-                        <div className="disclaimer__legal__safeguards">
-                            <p className='disclaimer'>Trusted Provisions</p>
-                            <div className="disclaimer__media">
-                                <p>Can Trust</p>
-                            </div>
-                        </div>
+    <main className={styles.legal__safeguards}>
+      <div className={styles.legal__safeguards__container}>  
+        <div className={styles.block__text}>
+          <div className={styles.block__title}>
+            <p className={styles.disclaimer}>{isSmallScreen ? t ('disclaimerOne'): t ('disclaimerTwo')}</p>
+            <h2 className={styles.title}>{isSmallScreen ? t ('titleOne'): t ('titleTwo')}</h2>
+            <p className={styles.text}>{isSmallScreen ? t ('subtitleOne'): t ('subtitleTwo')}</p>
+          </div>
 
-                        <div className="title__legal__safeguards">
-                            <div className="title__legal__safeguards__media">
-                                <h2>Legal Protection You</h2>
-                                <p>Create a free terms and conditions agreement (aka terms of use or terms of service) for your website or app</p>
-                            </div>
-                            <h2 className='title'>Secure Legal Safeguards</h2>
-                            <p className='text'>Attorney-certified compliance solutions for your convenience and protection.</p>
-                        </div> 
-                    </div>
-
-                    <div className="cards__legal__safeguards">
-                        <div className="policies__created">
-                            <img src={TermsConditions} alt=""/>
-                            <h3>100,000+</h3>
-                            <p>Policies Created</p>
-                        </div>
-
-                        <div className="businesses">
-                            <img src={Businesses} alt=""/>
-                            <h3>140,000+</h3>
-                            <p>Businesses</p>
-                        </div>
-
-                        <div className="compliant__pageviews">
-                            <img src={CompliantPageviews} alt=""/>
-                            <h3>60 Million+</h3>
-                            <p>Compliant Pageviews</p>
-                        </div>
-                    </div>
-                </div>
+          <div className={styles.cards}>
+            <div className={styles.policies__created}>
+              <img src={TermsConditions} alt=""/>
+              <h3>100,000+</h3>
+              <p>{t ('policiesCreated')}</p>
             </div>
-        </main>
-    </>
-  )
-}
 
-export default TrustedProvisions
+            <div className={styles.businesses}>
+              <img src={Businesses} alt=""/>
+              <h3>140,000+</h3>
+              <p>{t ('businesses')}</p>
+            </div>
+
+            <div className={styles.compliant__pageviews}>
+              <img src={CompliantPageviews} alt=""/>
+              <h3>60 Million+</h3>
+              <p>{t ('compliantPageviews')}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+};
+
+export default TrustedProvisions;

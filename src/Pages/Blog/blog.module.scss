@@ -1,0 +1,51 @@
+@import '../../template.scss';
+
+.first__screen{
+    width: 100%;
+    min-height: 100vh;
+    background: url("./pictures/backgruund.webp") center no-repeat #F1F3F6;
+    background-size: cover;
+}
+
+.blog__title{
+    max-width: 743px;
+    margin: 0 auto;
+    padding: 128px 0px 60px 0px;
+    .title__disclaimer{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 150%;
+        text-align: center;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #B6BFD9;
+        @include adaptiv-font(18, 14)
+    }
+    .title__text{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        text-align: center;
+        color: #1D212A;
+        @include adaptiv-font(24, 18)
+    }
+    & h1{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 300;
+        line-height: 120%;
+        text-align: center;
+        color: #1D212A;
+        @include adaptiv-font(64, 38)
+    }
+}
+
+@media (max-width: 768px) {
+    .blog__title{
+        margin: 60px 0px 60px 0px;
+        padding: 0px 10px;
+    }
+}

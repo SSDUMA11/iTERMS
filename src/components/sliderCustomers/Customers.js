@@ -1,38 +1,21 @@
 ///// IMG
-import Albert from "./pictures/Albert.jpg"
-import Rose from "./pictures/Rose.jpg"
-import Bryan from "./pictures/Bryan.jpg"
-import Stars from "./pictures/Stars.svg"
+import Albert from './pictures/Albert.webp';
+import Rose from './pictures/Rose.webp';
+import Bryan from './pictures/Bryan.webp';
 
 const slides = [
-    {
-        id: 1,
-        img: Albert,
-        name:'Albert C.',
-        status:"Generated a Privacy Policy",
-        text:'“I had two policies made, and for whatever reason there was an issue after processing the order. I sent an email to support, and to my surprise, there was a reply within ten minutes from Customer Support. TermsFeed further assisted me and stayed around to ensure my second order went smoothly.”',
-        rating:"5.0",
-        star: Stars
-    },
-    {
-        id: 2,
-        img: Rose,
-        name:'Rose V.s',
-        status:"Generated an EULA agreement",
-        text:'“My company develops software and web applications. I shared my experience with ITerms my coworkers as a great example of a guided system and product. I liked how the prices were included for each feature and at the end I saw the total cost and then received the EULA document in multiple formats.”',
-        rating:"5.0",
-        star: Stars
+  {
+    id: 1,
+    img: Albert,
+  },
+  {
+    id: 2,
+    img: Rose,
 
-    },
-    {
-        id: 3,
-        img: Bryan,
-        name:'Bryan T.',
-        status:"Generated a Privacy Policy",
-        text:'“I had been trying to write a Privacy Policy and Terms and Conditions for my website for quite a while. I finally decided that I didn\'t have the skill or legal knowledge to adequately prepare these documents so I went into Google and found TermsFeed.”',
-        rating:"5.0",
-        star: Stars
-
-    },
-]
-export {slides}
+  },
+  {
+    id: 3,
+    img: Bryan,
+  },
+];
+export {slides};

@@ -3,7 +3,7 @@
 .footer{
     max-width: 100%;
     min-height: 779px;
-    background: url("./pictures/footer.jpg") center no-repeat;
+    background: url("./pictures/footer.webp") center no-repeat;
     background-size: cover;
 }
 
@@ -110,7 +110,7 @@
     display: flex;
     .info__block{
         display: flex;
-        align-items: start;
+        align-items: flex-start;
         gap: 88px;
         .box{
             display: flex;

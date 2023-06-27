@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import { usePagination, DOTS } from './usePagination';
 import './pagination.scss';
+
 const Pagination = props => {
   const {
     onPageChange,
@@ -9,14 +10,14 @@ const Pagination = props => {
     siblingCount = 1,
     currentPage,
     pageSize,
-    className
+    className,
   } = props;
 
   const paginationRange = usePagination({
     currentPage,
     totalCount,
     siblingCount,
-    pageSize
+    pageSize,
   });
 
   // If there are less than 2 times in pagination range we shall not render the component
@@ -32,15 +33,15 @@ const Pagination = props => {
     onPageChange(currentPage - 1);
   };
 
-  let lastPage = paginationRange[paginationRange.length - 1];
+  const lastPage = paginationRange[paginationRange.length - 1];
   return (
     <ul
       className={classnames('pagination-container', { [className]: className })}
     >
-       {/* Left navigation arrow */}
+      {/* Left navigation arrow */}
       <li
         className={classnames('pagination-item', {
-          disabled: currentPage === 1
+          disabled: currentPage === 1,
         })}
         onClick={onPrevious}
       >
@@ -57,7 +58,7 @@ const Pagination = props => {
         return (
           <li
             className={classnames('pagination-item', {
-              selected: pageNumber === currentPage
+              selected: pageNumber === currentPage,
             })}
             onClick={() => onPageChange(pageNumber)}
           >
@@ -68,7 +69,7 @@ const Pagination = props => {
       {/*  Right Navigation arrow */}
       <li
         className={classnames('pagination-item', {
-          disabled: currentPage === lastPage
+          disabled: currentPage === lastPage,
         })}
         onClick={onNext}
       >

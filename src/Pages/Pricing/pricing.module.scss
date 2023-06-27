@@ -1,0 +1,62 @@
+@import '../../template.scss';
+
+.pricing__page{
+    width: 100%;
+    min-height: 100vh;
+    background: url("./pictures/backgruund.webp") center no-repeat #F1F3F6;
+    background-size: cover;
+}
+
+///title styles
+.pricing__block__title{
+  padding-top: 128px;
+  .pricing__disclaimer{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #B6BFD9;
+    @include adaptiv-font(18, 14);
+  }
+  .pricing__title{
+    font-weight: 400;
+    padding: 16px 0px;
+    font-family: 'Poppins';
+    font-style: normal;
+    line-height: 120%;
+    text-align: center;
+    color: #1D212A;
+    @include adaptiv-font(64, 32);
+  }
+  .pricing__text{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    text-align: center;
+    color: #1D212A;
+    @include adaptiv-font(24, 16);
+  }
+}
+
+///media
+@media (max-width: 768px) {
+  .pricing__block__title{
+    padding-top: 32px;
+  }
+}
+@media (max-width: 570px) {
+  .switch{
+    margin: 32px 0px 120px 0px;
+  }
+}
+@media (max-width: 450px) {
+  .pricing__block__title{
+    .pricing__title{
+      padding: 8px 0px;
+    }
+  }
+}

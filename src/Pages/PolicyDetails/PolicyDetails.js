@@ -1,188 +1,205 @@
-import React from 'react'
-import { motion } from "framer-motion"
-import './PolicyDetails.scss';
+import React, {useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
+import styles from './policyDetails.module.scss';
 import '../../fonts/fonts.scss';
 ///IMG
-import MadeforYourBusiness from "./pictures/MadeforYourBusiness.svg"
-import Customizable from "./pictures/Customizable.svg"
-import FreeWebHosting from "./pictures/FreeWebHosting.svg"
+import MadeforYourBusiness from './pictures/MadeforYourBusiness.webp';
+import Customizable from './pictures/Customizable.webp';
+import FreeWebHosting from './pictures/FreeWebHosting.webp';
 ///components
 import Slider from '../../components/slider/Slider';
 import TrustedProvisions from '../../components/TrustedProvisions/TrustedProvisions';
 import Questions from '../../components/questions/Questions';
 import Footer from '../../components/footer/Footer';
+import { MyContext } from '../../App';
+import { useContext } from 'react';
 
 
-///Animation
-const titleAnimation ={
-    hidden:{
-       x: -100,
-       opacity:0
-    },
-    visible:custom =>({
-        x: 0,
-        opacity:1,
-        transition:{delay: custom * 0.4}
-    })
-}
-const cardsAnimationLeft ={
-    hidden:{
-       x: -100,
-       opacity:0
-    },
-    visible:custom =>({
-        x: 0,
-        opacity:1,
-        transition:{delay: custom * 1}
-    })
-}
-const cardsAnimationRidth ={
-    hidden:{
-       x: 100,
-       opacity:0
-    },
-    visible:custom =>({
-        x: 0,
-        opacity:1,
-        transition:{delay: custom * 1}
-    })
-}
 const PolicyDetails = () => {
+  
+  ///is responsible for translating the component
+  const { t } = useTranslation(['policyDetails']);
+
+  const [isSmallScreen, setIsSmallScreen] = useContext(MyContext);///the table when the screen width is less than 769px 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 769);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  ///Animation
+  const titleAnimation ={
+    hidden:{
+      x: -100,
+      opacity:0,
+    },
+    visible:custom =>({
+      x: 0,
+      opacity:1,
+      transition:{delay: custom * 0.4},
+    }),
+  };
+  const cardsAnimationLeft ={
+    hidden:{
+      x: -100,
+      opacity:0,
+    },
+    visible:custom =>({
+      x: 0,
+      opacity:1,
+      transition:{delay: custom * 0.4},
+    }),
+  };
+  const cardsAnimationRidth ={
+    hidden:{
+      x: 100,
+      opacity:0,
+    },
+    visible:custom =>({
+      x: 0,
+      opacity:1,
+      transition:{delay: custom * 0.4},
+    }),
+  };
   return (
-    <div className='policyDetails'>
-        <motion.div
+    <div className={styles.policy__details}>
+      <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{amount: 0.2, once:true}}  
-        className="first-screen">
-            <div className="page__blok__terms__conditions" __container>
-                <motion.div custom={1} variants={titleAnimation} className="disclaimer">
-                    <p>flexible pricing</p>
-                </motion.div>
+        className={styles.first__screen}>
+        <div className={styles.blok__title__container}>
+          <motion.div custom={1} variants={titleAnimation} className={styles.disclaimer}>
+            <p>{t ('disclaimer')}</p>
+          </motion.div>
 
-                <motion.div custom={1} variants={titleAnimation} className="terms__conditions__title">
-                    <p>Terms & Conditions</p>
-                </motion.div>
+          <motion.div custom={1} variants={titleAnimation} className={styles.title}>
+            <h1>{t ('title')}</h1>
+          </motion.div>
 
-                <motion.div custom={2} variants={titleAnimation} className="terms__conditions__text">
-                    <p>Seamlessly generate and administer professional Terms & Conditions that are compliant with international legislation.</p>
-                </motion.div>
+          <motion.div custom={2} variants={titleAnimation} className={styles.subtitle}>
+            <p>{isSmallScreen ? t ('subtitleOne'): t ('subtitleTwo')}</p>
+          </motion.div>
 
-                <motion.div custom={3} variants={titleAnimation} className="page__btn">
-                    <button className="generate__btn">Generate</button>
-                    <div className="learn__more" >
-                        <a href="*" > Learn more <span className='arrow'></span></a>
-                    </div> 
-            </motion.div>
+          <motion.div custom={3} variants={titleAnimation} className={styles.page__btn}>
+            <button className={styles.generate__btn}>{t ('button')}</button>
+            <div className={styles.learn__more}>
+              <a href="*" >{t ('a')}<span className={styles.arrow}></span></a>
+            </div> 
+          </motion.div>
         </div>
 
-        <motion.div custom={4} variants={titleAnimation} className="advanced__features__title" __container>
-            <p>Explore Advanced Features</p>
+        <motion.div custom={4} variants={titleAnimation} className={styles.advanced__features__title__container}>
+          <h2>{isSmallScreen ? t ('titleTwoSmall'): t ('titleTwoBig')}</h2>
         </motion.div>
-    </motion.div>
+      </motion.div>
 
-    <main
-     className="page">
-        <div className="page__container">
-            <div className="advanced__features__blok">
-                <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{amount: 0.2, once:true }}
-                 variants={cardsAnimationLeft} custom={1} className="cards__one">
-                    <div className="cards__one__img">
-                        <img src={MadeforYourBusiness} alt=""/>
-                    </div>
-                    <div className="cards__one__text" >
-                        <h2>Tailor-Made For Your Business</h2>
-                        <p>Safeguard the interests of your content. Generate precision Terms & Conditions policies designed especially for your website, app, blog, SaaS, or eCommerce site.</p>
-                    </div>
-                </motion.div>
+      <main className={styles.page}>
+        <div className={styles.page__container}>
+          <div className={styles.advanced__features__blok}>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{amount: 0.2, once:true }}
+              variants={cardsAnimationLeft} custom={1} className={styles.cards__one}>
+              <div className={styles.cards__one__img}>
+                <img src={MadeforYourBusiness} alt=""/>
+              </div>
+              <div className={styles.cards__one__text}>
+                <h2>{isSmallScreen ? t ('cardsOneTitleSmall'): t ('cardsOneTitleBig')}</h2>
+                <p>{isSmallScreen ? t ('cardsOneTextSmall'): t ('cardsOneTextBig')}</p>
+              </div>
+            </motion.div>
                     
-                <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{amount: 0.2, once:true}} 
-                variants={cardsAnimationRidth} custom={1} className="cards__one">
-                    <div className="cards__one__text">
-                        <h2>Fully Customizable</h2>
-                        <p>Don't settle for generic Terms & Conditions. With iTerms, fully customize your requirements' appearance to compliment your website or mobile app design aesthetics to enhance your credibility.</p>
-                    </div>
-                    <div className="cards__two__img">
-                        <img src={Customizable} alt=""/>
-                    </div>
-                </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{amount: 0.2, once:true}} 
+              variants={cardsAnimationRidth} custom={1} className={`${styles.cards__one} ${styles.reverse}`}>
+              <div className={styles.cards__one__text}>
+                <h2>{isSmallScreen ? t ('cardsTwoTitleSmall'): t ('cardsTwoTitleBig')}</h2>
+                <p>{isSmallScreen ? t ('cardsTwoTextSmall'): t ('cardsTwoTextBig')}</p>
+              </div>
+              <div className={styles.cards__two__img}>
+                <img src={Customizable} alt=""/>
+              </div>
+            </motion.div>
 
-                <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{amount: 0.2, once:true}}
-                 variants={cardsAnimationLeft} custom={1} className="cards__one">
-                    <div className="cards__three__img">
-                        <img src={FreeWebHosting} alt=""/>
-                    </div>
-                    <div className="cards__one__text"t>
-                        <h2>Web Hosting</h2>
-                        <p>iTerms is dedicated to providing you with seamless business solutions, which is why we're hosting your Legal Agreement on our servers.</p>
-                    </div>
-                </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{amount: 0.2, once:true}}
+              variants={cardsAnimationLeft} custom={1} className={styles.cards__one}>
+              <div className={styles.cards__three__img}>
+                <img src={FreeWebHosting} alt=""/>
+              </div>
+              <div className={styles.cards__one__text}>
+                <h2>{isSmallScreen ? t ('cardsThreeTitleSmall'): t ('cardsThreeTitleBig')}</h2>
+                <p>{isSmallScreen ? t ('cardsThreeTextSmall'): t ('cardsThreeTextBig')}</p>
+              </div>
+            </motion.div>
+          </div>
+
+          <div className={styles.online__terms}>
+            <h2>{isSmallScreen ? t ('titleThreeSmall'): t ('titleThreeBig')}</h2>
+            <div className={styles.online__terms__generator}>
+              <div className={styles.agreements}>
+                <h3>{isSmallScreen ? t ('titleListOneSmall'): t ('titleListOneBig')}</h3>
+                <p>{isSmallScreen ? t ('subtitleListOneSmall'): t ('subtitleListOneBig')}</p>
+                <ul className={styles.list}>
+                  <li className={styles.list__item}>{t ('itemOneOne')}</li>
+                  <li className={styles.list__item}>{t ('itemOneTwo')}</li>
+                  <li className={styles.list__item}>{t ('itemOneThree')}</li>
+                  <li className={styles.list__item}>{t ('itemOneFour')}</li>
+                  <li className={styles.list__item}>{t ('itemOneFive')}</li>
+                  <li className={styles.list__item}>{t ('itemOneSix')}</li>
+                </ul>
+                <p>{t ('textListOne')}</p>
+              </div>
+
+              <div className={styles.business__safeguard}>
+                <h3>{isSmallScreen ? t ('titleListTwoSmall'): t ('titleListTwoBig')}</h3>
+                <p>{isSmallScreen ? t ('subtitleListTwoSmall'): t ('subtitleListTwoBig')}</p>
+                <ul className={styles.list}>
+                  <li className={styles.list__item}>{t ('itemTwoOne')}</li>
+                  <li className={styles.list__item}>{t ('itemTwoTwo')}</li>
+                  <li className={styles.list__item}>{t ('itemTwoThree')}</li>
+                  <li className={styles.list__item}>{t ('itemTwoFour')}</li>
+                  <li className={styles.list__item}>{t ('itemTwoFive')}</li>
+                  <li className={styles.list__item}>{t ('itemTwoSix')}</li>
+                </ul>
+                <p>{isSmallScreen ? t ('textListTwoSmall'): t ('textListTwoBig')}</p>
+              </div>
             </div>
 
-            <div className="online__terms">
-                <h2>Online Terms & Conditions Generator</h2> 
-                <h2>You Can Trust</h2>
-                <div className="online__terms__generator">
-                    <div className="agreements">
-                        <h3>Numerous Terms & Conditions Agreements</h3>
-                        <p>Regardless of the industry you operate in, iTerms has Terms & Conditions solutions made just for you:</p>
-                        <ul className="list">
-                            <li className="list__item">Blog</li>
-                            <li className="list__item">Website</li>
-                            <li className="list__item">Mobile App</li>
-                            <li className="list__item">Ecommerce site</li>
-                            <li className="list__item">Online shop/store</li>
-                            <li className="list__item">SaaS</li>
-                        </ul>
-                        <p>Trusted by thousands of companies worldwide, Termly`s intuitive software generates terms and conditions for any business in minutes. Don`t put your business at risk when protection is free.</p>
-                    </div>
+            <button className={styles.online__terms__btn}>{t ('buttonTwo')}</button>
 
-                    <div className="business__safeguard">
-                        <h3>Safeguard Your Business Interests With Terms & Conditions</h3>
-                        <p>Operate your business without having to question whether your interests are protected. With iTerms, limit your liability and protect your livelihood against potential legal action.</p>
-                        <ul className="list">
-                            <li className="list__item">Terms of use</li>
-                            <li className="list__item">Intellectual property rights</li>
-                            <li className="list__item">Digital Millennium Copyright Act notice and policy</li>
-                            <li className="list__item">Prohibited activities</li>
-                            <li className="list__item">Termination clause</li>
-                            <li className="list__item">Governing law</li>
-                        </ul>
-                        <p>Protect your content and try the iTerms Terms & Conditions generator today! </p>
-                    </div>
-                </div>
+          </div>
 
-                <button className="online__terms__btn">Generate</button>
-
+          <div className={styles.explore__iTerms__blok}>
+            <div className={styles.disclaimer__explore__iTerms}>
+              <p>{isSmallScreen ? t ('disclaimerTwoSmall'): t ('disclaimerTwoBig')}</p>
+              <h2>{isSmallScreen ? t ('titleFourSmall'): t ('titleFourBig')}</h2>
             </div>
-
-            <div className="explore__iTerms__blok">
-                <div class="disclaimer__explore__iTerms">
-                    <p>Intuitively Made For Your Business</p>
-                    <h2>Explore iTerms Solutions </h2>
-                </div>
-                <div className="explore__iTerms__text">
-                    <p>Regardless of your requirements, iTerms has a solution ready for you to utilize.</p>
-                </div>
+            <div className={styles.explore__iTerms__text}>
+              <p>{isSmallScreen ? t ('subheadingSmall'): t ('subheadingBig')}</p>
             </div>
-            <Slider/>
+          </div>
+          <Slider/>
         </div>
-    </main>
+      </main>
 
-    <TrustedProvisions/>
-    <Questions/>
-    <Footer/>
+      <TrustedProvisions/>
+      <Questions/>
+      <Footer/>
     </div>
-  )
-}
+  );
+};
 
-export default PolicyDetails
+export default PolicyDetails;
