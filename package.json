@@ -1,9 +1,6 @@
 {
   "name": "test-react",
   "version": "0.1.0",
-  "description": "",
-  "main": "webpack.config.js",
-  "homepage": "https://ssduma11.github.io/iTerms/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -36,9 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint -c .eslintrc.json --ext .js,.jsx .",
-    "lint:fix": "npm run lint -- --fix",
-    "deploy": "gh-pages -d dist",
-    "predeploy": "npm run build"
+    "lint:fix": "npm run lint -- --fix"
   },
   "eslintConfig": {
     "extends": [
