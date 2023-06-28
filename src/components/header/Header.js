@@ -61,11 +61,15 @@ const Header = () => {
     }
   };
 
+  ////It hides the button after the user logs in.
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   ///button accordion login and logout
   const [activeIndex, setActiveIndex] = useState(null);
   const toggleAccordion = () => {
     setActiveIndex((prevIndex) => (prevIndex === null ? 1 : null));
   };
+
   return (
     <BrowserRouter>
       <header className={styles.header}>
@@ -125,18 +129,28 @@ const Header = () => {
                       <div
                         className={`${styles.accordion__content} ${styles.open}`}
                       >
-                        <ul className={styles.item}>
-                          <li>
-                            <NavLink to="/signIn" onClick={handleNavLinkClick}>
-                              {t('BtnLogIn')}
-                            </NavLink>
-                          </li>
-                          <li>
-                            <NavLink to="/signUp" onClick={handleNavLinkClick}>
-                              {t('BtnSignUp')}
-                            </NavLink>
-                          </li>
-                        </ul>
+                        {isLoggedIn ?
+                          <ul className={styles.item}>
+                            <li>
+                              <NavLink to="/signIn" onClick={handleNavLinkClick}>
+                                {t('BtnLogOut')}
+                              </NavLink>
+                            </li>
+                          </ul>
+                          :
+                          <ul className={styles.item}>
+                            <li>
+                              <NavLink to="/signIn" onClick={handleNavLinkClick}>
+                                {t('BtnLogIn')}
+                              </NavLink>
+                            </li>
+                            <li>
+                              <NavLink to="/signUp" onClick={handleNavLinkClick}>
+                                {t('BtnSignUp')}
+                              </NavLink>
+                            </li>
+                          </ul>
+                        }
                       </div>
                     )}
                   </div>
@@ -160,19 +174,31 @@ const Header = () => {
               </select>
             </div>
           </nav>
+          {isLoggedIn ? (
+            // Buttons to be hidden when logged in
+            <div className={styles.header__btn}>
+              <button className={styles.header__sign__up__btn}>
+                <NavLink to="/signIn" onClick={handleNavLinkClick}>
+                  {t('BtnLogOut')}
+                </NavLink>
+              </button>
+            </div>
+          ) : (
+            // Buttons to be shown when not logged in
+            <div className={styles.header__btn}>
+              <button className={styles.header__log__in__btn}>
+                <NavLink to="/signIn" onClick={handleNavLinkClick}>
+                  {t('BtnLogIn')}
+                </NavLink>
+              </button>
 
-          <div className={styles.header__btn}>
-            <button className={styles.header__log__in__btn}>
-              <NavLink to="/signIn" onClick={handleNavLinkClick}>
-                {t('BtnLogIn')}
-              </NavLink>
-            </button>
-            <button className={styles.header__sign__up__btn}>
-              <NavLink to="/signUp" onClick={handleNavLinkClick}>
-                {t('BtnSignUp')}
-              </NavLink>
-            </button>
-          </div>
+              <button className={styles.header__sign__up__btn}>
+                <NavLink to="/signUp" onClick={handleNavLinkClick}>
+                  {t('BtnSignUp')}
+                </NavLink>
+              </button>
+            </div>
+          )}
         </div>
       </header>
 
@@ -183,8 +209,8 @@ const Header = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/signUp" element={<SignUp />} />
-        <Route path="/signIn" element={<SignIn />} />
+        <Route path="/signUp" element={<SignUp setIsLoggedIn={setIsLoggedIn}/>} />
+        <Route path="/signIn" element={<SignIn setIsLoggedIn={setIsLoggedIn}/>} />
         <Route path="/resetYourPassword" element={<ResetYourPassword />} />
         <Route path="*" element={<Oops />} />
       </Routes>

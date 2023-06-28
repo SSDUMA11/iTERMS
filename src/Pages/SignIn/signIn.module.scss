@@ -245,9 +245,16 @@ input:focus ~ .line_two:before, input:focus ~ .line_two:after {
     .page__container{
         padding: 30px 0px 70px 0px;
         .page__blok{
+            top: 120px;
+            position: relative;
             justify-content: center;
             min-height: 600px;
-            max-width: 768px;
+            max-width: 475px;
+            margin: 0 auto;
+            // margin-top:120px;
+            // justify-content: center;
+            // min-height: 600px;
+            // max-width: 768px;
         }
     }
     .title {

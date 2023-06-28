@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './what_new.module.scss';
 import '../../fonts/fonts.scss';
 import '../../i18n';
+///IMG
 import picture from './pictures/post.webp';
 
 const WhatNew = () => {

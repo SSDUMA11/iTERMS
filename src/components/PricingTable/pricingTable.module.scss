@@ -110,6 +110,9 @@
                 font-size: 16px;
                 line-height: 150%;
                 color: #FFFFFF;
+                &:hover{
+                    background: linear-gradient(0deg, rgb(164, 98, 194) 0%, rgb(151, 102, 225) 100%);
+                }
             }
         }
         
@@ -172,6 +175,10 @@
                 line-height: 150%;
                 color: #897EFF;
                 background-color: #f1f3f600;
+                &:hover{
+                    color: #FFFFFF;
+                    background: linear-gradient(0deg, rgb(164, 98, 194) 0%, rgb(151, 102, 225) 100%);
+                }
             }
         }
     }

@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import {Formik, Form, Field} from 'formik';
 import { NavLink, useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import styles from './signIn.module.scss';
 import '../../fonts/fonts.scss';
 import '../../i18n';
@@ -9,12 +10,14 @@ import '../../i18n';
 import facebook from './pictures/facebook.webp';
 import google from './pictures/google.webp';
 
-const SignIn = () => {
+const SignIn = ({setIsLoggedIn}) => {
+
   const { t } = useTranslation(['signIn']);
   ///after filling out the form, it takes you to the main page
   const navigate  = useNavigate();
   const handleFormSubmit = () => {
     navigate('/');
+    setIsLoggedIn(true);
   };
 
   ///validates the form
@@ -118,6 +121,10 @@ const SignIn = () => {
       </main>
     </div>
   );
+};
+
+SignIn.propTypes = {
+  setIsLoggedIn: PropTypes.func.isRequired,
 };
 
 export default SignIn;
